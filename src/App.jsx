@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
-import { GrUploadOption } from "react-icons/gr";
-import './App.css'
+import { BsArrowUpSquare } from "react-icons/bs";
+import "./App.css";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -34,6 +34,7 @@ function App() {
     }
 
     setGeneratingAnswer(false);
+    setQuestion(""); // Clear the textarea after generating the answer
   }
 
   function handleTyping(e) {
@@ -46,10 +47,10 @@ function App() {
   }
 
   return (
-    <div className="h-screen p-3 flex flex-col justify-between">
-      <div className="w-full md:w-2/3 m-auto text-center">
+    <div className="h-screen p-3 flex flex-col">
+      <div className="flex-grow">
         <a href="https://github.com/Vishesh-Pandey/chat-ai" target="_blank">
-          <h1 className="text-3xl text-center text-red-500">SODA AI</h1>
+          <h1 className="text-3xl text-slate-600">SODA AI</h1>
         </a>
         <div className="w-full md:w-2/3 m-auto text-center mt-4">
           {answer && (
@@ -60,12 +61,12 @@ function App() {
         </div>
         {error && <p className="text-red-500 mt-2">{error}</p>}
       </div>
-      <div className="mt-4 relative">
+      <div className="relative mt-4">
         <center>
           <div className="relative">
             <textarea
               required
-              className="border h-20 w-4/5 px-2 py-2 my-2 rounded-lg placeholder-middle text-right"
+              className="border h-20 w-11/12 px-2 py-2 my-2 rounded-lg placeholder-middle text-right"
               value={question}
               onChange={handleTyping}
               placeholder={typing ? "" : "Ask anything"}
@@ -76,16 +77,16 @@ function App() {
               </span>
             )}
           </div>
+          <button
+            type="submit"
+            className="bg-slate-700 text-white px-4 py-4 rounded-lg hover:bg-slate-600 transition-colors duration-300 absolute bottom-0 right-0 mb-4 mr-4"
+            onClick={generateAnswer}
+            disabled={generatingAnswer}
+          >
+            <BsArrowUpSquare />
+            {generatingAnswer? "..." : "" }
+          </button>
         </center>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-2 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 absolute top-1/2 right-4 transform -translate-y-1/2 flex items-center justify-center"
-          onClick={generateAnswer}
-          disabled={generatingAnswer}
-        >
-          <GrUploadOption />
-          {generatingAnswer}
-        </button>
       </div>
     </div>
   );
