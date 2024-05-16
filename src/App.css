@@ -1,0 +1,20 @@
+.placeholder-middle::placeholder {
+    text-align: center;
+    color: transparent;
+  }
+  
+  .placeholder-middle::-moz-placeholder {
+    text-align: center;
+    color: transparent;
+  }
+  
+  .placeholder-middle:-ms-input-placeholder {
+    text-align: center;
+    color: transparent;
+  }
+  
+  .placeholder-middle::-webkit-input-placeholder {
+    text-align: center;
+    color: transparent;
+  }
+  
