@@ -47,12 +47,12 @@ function App() {
   }
 
   return (
-    <div className="h-screen p-3 flex flex-col">
+    <div className="h-screen p-3 flex flex-col  bg-teal-700">
       <div className="flex-grow">
         <a href="https://github.com/Vishesh-Pandey/chat-ai" target="_blank">
-          <h1 className="text-3xl text-slate-600">SODA AI</h1>
+          <h1 className="text-9xl text-slate-900">SODA AI</h1>
         </a>
-        <div className="w-full md:w-2/3 m-auto text-center mt-4">
+        <div className="w-full md:w-2/3 m-auto  mt-4">
           {answer && (
             <div className="bg-gray-100 p-4 rounded">
               <ReactMarkdown>{answer}</ReactMarkdown>
